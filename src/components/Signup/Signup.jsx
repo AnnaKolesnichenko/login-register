@@ -1,24 +1,20 @@
 import React from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
-import styled from "styled-components";
+import tabletGoose from "../../images/signUpElement.png";
 
-const Wrapper = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 335px;
-`;
-
-const Form = styled.form`
-  margin: auto;
-`;
-
-const InputDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
+import {
+  Image,
+  StyledForm,
+  Wrapper,
+  InputDiv,
+  StyledLabel,
+  Title,
+  StyledInput,
+  StyledButton,
+  StyleLink,
+  Svg,
+} from "./Signup.style";
 
 const Signup = () => {
   const formik = useFormik({
@@ -32,11 +28,12 @@ const Signup = () => {
 
   return (
     <Wrapper>
-      <h2 className="title">Sign Up</h2>
-      <Form onSubmit={formik.handleSubmit} className="form">
+      <Image src={tabletGoose} alt="goose with tablet" />
+      <StyledForm onSubmit={formik.handleSubmit} className="form">
+        <Title className="title">Sign Up</Title>
         <InputDiv>
-          <label htmlFor="name">Name</label>
-          <input
+          <StyledLabel htmlFor="name">Name</StyledLabel>
+          <StyledInput
             type="text"
             id="name"
             name="name"
@@ -47,8 +44,8 @@ const Signup = () => {
         </InputDiv>
 
         <InputDiv>
-          <label htmlFor="email">Email</label>
-          <input
+          <StyledLabel htmlFor="email">Email</StyledLabel>
+          <StyledInput
             type="email"
             id="email"
             name="email"
@@ -59,8 +56,8 @@ const Signup = () => {
         </InputDiv>
 
         <InputDiv>
-          <label htmlFor="password">Password</label>
-          <input
+          <StyledLabel htmlFor="password">Password</StyledLabel>
+          <StyledInput
             type="text"
             id="password"
             name="password"
@@ -69,8 +66,25 @@ const Signup = () => {
             onChange={formik.handleChange}
           />
         </InputDiv>
-      </Form>
-      <button>Sign Up</button>
+        <StyledButton>
+          Sign Up
+          <Svg>
+            <use href="../../images/symbol-defs.svg#icon-Icon"></use>
+          </Svg>
+        </StyledButton>
+      </StyledForm>
+      <StyleLink
+        to="/login"
+        // style={{
+        //   color: "#3e85f3",
+        //   fontSize: "12px",
+        //   fontWeight: "bold",
+        //   position: "absolute",
+        //   bottom: "110px",
+        // }}
+      >
+        Log In
+      </StyleLink>
     </Wrapper>
   );
 };

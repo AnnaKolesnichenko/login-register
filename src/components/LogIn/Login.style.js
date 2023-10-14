@@ -1,14 +1,22 @@
-import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import styled from "styled-components";
+
+export const Container = styled.div``;
 
 export const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
-  //justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   margin: auto;
   height: 100vh;
   background-color: #dcebf7;
+
+  @media (min-width: 1200px) {
+    background-image: url("../../images/Group 1966.jpg");
+    background-size: cover;
+    background-position: center;
+  }
 `;
 
 export const StyledForm = styled.form`
@@ -18,14 +26,15 @@ export const StyledForm = styled.form`
   margin-left: auto;
   margin-right: auto;
   margin-bottom: 24px;
-  position: relative;
   padding: 24px;
+  position: relative;
   width: 287px;
+  /* height: 376px; */
   background-color: #ffffff;
   border-radius: 8px;
 
   @media (min-width: 768px) {
-    margin-top: 124px;
+    margin-top: 174px;
     width: 400px;
     padding: 40px;
   }
@@ -61,17 +70,53 @@ export const StyledLabel = styled.label`
 `;
 
 export const StyledInput = styled.input`
+  display: flex;
+  justify-content: center;
   height: 46px;
   border-radius: 8px;
   padding-left: 14px;
   border: 1px solid #dce3e5;
   &::placeholder {
+    content: "";
     color: #dce3e5;
     font-size: 16px;
+    line-height: 46px;
+  }
+  &.custom {
+    &::placeholder {
+      font-size: 30px;
+      margin: 0;
+    }
   }
 
   @media (min-width: 768px) {
     height: 54px;
+  }
+`;
+
+export const StyledInputP = styled.input`
+  display: flex;
+  justify-content: center;
+  height: 46px;
+  border-radius: 8px;
+  padding-left: 14px;
+  border: 1px solid #dce3e5;
+  &::placeholder {
+    content: "";
+    position: absolute;
+    top: 5px;
+    bottom: 5px;
+    color: #dce3e5;
+    font-size: 32px;
+    line-height: 46px;
+  }
+
+  @media (min-width: 768px) {
+    height: 54px;
+    &::placeholder {
+      top: 10px;
+      bottom: 5px;
+    }
   }
 `;
 
@@ -115,7 +160,6 @@ export const StyleLink = styled(NavLink)`
 
   @media (min-width: 768px) {
     font-size: 18px;
-    bottom: 60px;
   }
 `;
 
@@ -124,9 +168,8 @@ export const Image = styled.img`
 
   @media (min-width: 1200px) {
     position: fixed;
-    top: 354px;
-    /* left: 49px; */
-    margin-right: 950px;
+    top: 230px;
+    margin-left: 950px;
     display: block;
     font-size: 18px;
   }
