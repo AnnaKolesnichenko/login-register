@@ -132,3 +132,9 @@ export const Image = styled.img`
   }
   background-color: transparent;
 `;
+
+export const Error = styled.div`
+  margin-top: 5px;
+  font-size: 12px;
+  color: #3e85f3;
+`;
