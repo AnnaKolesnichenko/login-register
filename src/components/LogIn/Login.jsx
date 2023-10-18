@@ -19,8 +19,11 @@ import {
   Svg,
   Image,
 } from "./Login.style";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -34,7 +37,10 @@ const Login = () => {
         .min(7, "Пароль мінімум 7 символів")
         .required("Обов'язкове поле"),
     }),
-    onSubmit: (values) => console.log(JSON.stringify(values, null, 2)),
+    onSubmit: (values) => {
+      console.log(JSON.stringify(values, null, 2));
+      navigate("/user");
+    },
   });
 
   return (
@@ -73,7 +79,7 @@ const Login = () => {
             <Error>{formik.errors.password}</Error>
           ) : null}
         </InputDiv>
-        <StyledButton>
+        <StyledButton type="button">
           Log In
           <Svg>
             <use href="../../images/symbol-defs.svg#icon-Icon"></use>
@@ -81,7 +87,7 @@ const Login = () => {
         </StyledButton>
       </StyledForm>
       <StyleLink
-        to="/"
+        to="/user"
         // style={{
         //   color: "#3e85f3",
         //   fontSize: "12px",
