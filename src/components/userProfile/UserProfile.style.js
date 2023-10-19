@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { BsFillPlusCircleFill } from "react-icons/bs";
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import DatePicker from "react-datepicker";
+
 export const Container = styled.div`
   background-color: #f7f6f9;
   height: 100vh;
@@ -19,6 +22,41 @@ export const Container = styled.div`
     //padding-top: 64px;
     padding-bottom: 32px;
   }
+`;
+
+export const PlusContainer = styled.div`
+  fill: blue;
+  position: absolute;
+  top: 25%;
+  left: 52%;
+
+  @media (min-width: 768px) {
+    top: 65%;
+  }
+
+  @media (min-width: 1440px) {
+    top: 67%;
+  }
+`;
+
+export const Icon = styled(BsFillPlusCircleFill)`
+  fill: #3e85f3;
+  background-color: white;
+  border-radius: 100px;
+  width: 8px;
+  height: 8px;
+
+  @media (min-width: 768px) {
+    width: 18px;
+    height: 18px;
+  }
+`;
+
+export const TickIcon = styled(MdOutlineKeyboardArrowDown)`
+  width: 18px;
+  height: 18px;
+  top: 3px;
+  right: 10px;
 `;
 
 export const Wrapper = styled.div`
@@ -71,22 +109,6 @@ export const Image = styled.img`
   }
 `;
 
-export const PlusContainer = styled.div`
-  fill: blue;
-  position: absolute;
-  top: 28%;
-  left: 52%;
-
-  @media (min-width: 768px) {
-    width: 18px;
-    height: 18px;
-  }
-`;
-
-export const Icon = styled(BsFillPlusCircleFill)`
-  fill: #3e85f3;
-`;
-
 export const Title = styled.h1`
   color: #343434;
   font-family: Inter;
@@ -136,6 +158,9 @@ export const StyledForm = styled.form`
   @media (min-width: 1440px) {
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 50px;
   }
 `;
 
@@ -168,11 +193,36 @@ export const StyledInput = styled.input`
   padding-bottom: 12px;*/
   box-sizing: border-box;
   padding-left: 14px;
+  padding-right: 14px;
   margin-bottom: 18px;
   height: 42px;
   width: 299px;
   border-radius: 8px;
   border: 1px solid rgba(17, 17, 17, 0.1);
+  font-weight: bold;
+  &::placeholder {
+    color: black;
+    font-weight: bold;
+    text-indent: 14px;
+  }
+
+  @media (min-width: 768px) {
+    margin-bottom: 24px;
+    height: 46px;
+    width: 354px;
+  }
+`;
+
+export const DateInput = styled(DatePicker)`
+  box-sizing: border-box;
+  padding-left: 14px;
+  padding-right: 14px;
+  margin-bottom: 18px;
+  height: 42px;
+  width: 299px;
+  border-radius: 8px;
+  border: 1px solid rgba(17, 17, 17, 0.1);
+  font-weight: bold;
   &::placeholder {
     color: black;
     font-weight: bold;
@@ -188,7 +238,7 @@ export const StyledInput = styled.input`
 
 export const Button = styled.button`
   width: 195px;
-  /* height: 46px; */
+  height: 46px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -205,6 +255,7 @@ export const Button = styled.button`
   @media (min-width: 768px) {
     margin-top: 16px;
     width: 262px;
+    height: 48px;
   }
 `;
 

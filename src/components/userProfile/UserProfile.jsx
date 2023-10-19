@@ -13,14 +13,23 @@ import {
   Title,
   User,
   Wrapper,
+  DateInput,
+  TickIcon,
 } from "./UserProfile.style";
+
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 import image from "../../images/avatar@2x.jpg";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useState } from "react";
 //import { BsFillPlusCircleFill } from "react-icons/bs";
 
 const UserProfile = () => {
+  const [startDate, setStartDate] = useState(new Date());
+
   const formik = useFormik({
     initialValues: {
       name: "Nadiia Doe",
@@ -54,84 +63,96 @@ const UserProfile = () => {
             <Icon />
           </PlusContainer>
           <Title>Nadiia Doe</Title>
-          <User>user</User>
+          <User>User</User>
         </About>
-        <div><StyledForm onSubmit={formik.handleSubmit}>
-          <Section>
-            <StyledLabel htmlFor="name">User Name</StyledLabel>
-            <StyledInput
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Nadiia Doe"
-              value={formik.values.name}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            {formik.errors.name && formik.touched.name ? (
-              <Error>{formik.errors.name}</Error>
-            ) : null}
-          </Section>
-          <Section>
-            <StyledLabel htmlFor="birthdate">Birthday</StyledLabel>
-            <StyledInput
-              type="date"
-              name="birthdate"
-              id="birthdate"
-              placeholder="25/08/1995"
-              value={formik.values.birthdate}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            {formik.errors.birthdate && formik.touched.birthdate ? (
-              <Error>{formik.errors.birthdate}</Error>
-            ) : null}
-          </Section>
-          <Section>
-            <StyledLabel htmlFor="email">Email</StyledLabel>
-            <StyledInput
-              type="email"
-              name="email"
-              id="email"
-              placeholder="nadiia@gmail.com"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            {formik.errors.email && formik.touched.email ? (
-              <Error>{formik.errors.email}</Error>
-            ) : null}
-          </Section></StyledForm>
-          <Section>
-            <StyledLabel htmlFor="phone">Phone</StyledLabel>
-            <StyledInput
-              type="phone"
-              name="phone"
-              id="phone"
-              placeholder="38 (097) 256 34 77"
-              value={formik.values.phone}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            {formik.errors.phone && formik.touched.phone ? (
-              <Error>{formik.errors.phone}</Error>
-            ) : null}
-          </Section>
-          <Section>
-            <StyledLabel htmlFor="skype">Skype</StyledLabel>
-            <StyledInput
-              type="text"
-              name="skype"
-              id="skype"
-              placeholder="Add a skype number"
-              value={formik.values.skype}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-            />
-            {formik.errors.skype && formik.touched.skype ? (
-              <Error>{formik.errors.skype}</Error>
-            ) : null}
-          </Section>
+        <StyledForm onSubmit={formik.handleSubmit}>
+          <div>
+            <Section>
+              <StyledLabel htmlFor="name">User Name</StyledLabel>
+              <StyledInput
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Nadiia Doe"
+                value={formik.values.name}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.errors.name && formik.touched.name ? (
+                <Error>{formik.errors.name}</Error>
+              ) : null}
+            </Section>
+            <Section>
+              <StyledLabel htmlFor="birthdate">Birthday</StyledLabel>
+              {/* <StyledInput
+                type="date"
+                name="birthdate"
+                id="birthdate"
+                placeholder="25/08/1995"
+                value={formik.values.birthdate}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              /> */}
+
+              <DateInput
+                showIcon
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+                icon={<TickIcon />}
+              />
+
+              {formik.errors.birthdate && formik.touched.birthdate ? (
+                <Error>{formik.errors.birthdate}</Error>
+              ) : null}
+            </Section>
+            <Section>
+              <StyledLabel htmlFor="email">Email</StyledLabel>
+              <StyledInput
+                type="email"
+                name="email"
+                id="email"
+                placeholder="nadiia@gmail.com"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.errors.email && formik.touched.email ? (
+                <Error>{formik.errors.email}</Error>
+              ) : null}
+            </Section>
+          </div>
+          <div>
+            <Section>
+              <StyledLabel htmlFor="phone">Phone</StyledLabel>
+              <StyledInput
+                type="phone"
+                name="phone"
+                id="phone"
+                placeholder="38 (097) 256 34 77"
+                value={formik.values.phone}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.errors.phone && formik.touched.phone ? (
+                <Error>{formik.errors.phone}</Error>
+              ) : null}
+            </Section>
+            <Section>
+              <StyledLabel htmlFor="skype">Skype</StyledLabel>
+              <StyledInput
+                type="text"
+                name="skype"
+                id="skype"
+                placeholder="Add a skype number"
+                value={formik.values.skype}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+              />
+              {formik.errors.skype && formik.touched.skype ? (
+                <Error>{formik.errors.skype}</Error>
+              ) : null}
+            </Section>
+          </div>
         </StyledForm>
         <Button type="button">Save Changes</Button>
       </Wrapper>
